@@ -14,7 +14,7 @@ public class Main {
 
         if (conexao != null) {
             try {
-                Administrador adm = new Administrador("adm", "adm123");
+                Administrador adm = new Administrador("adm", "adm");
                 Scanner scanner = new Scanner(System.in);
 
                 System.out.println("Digite o usuario");
@@ -24,30 +24,24 @@ public class Main {
                 if (adm.verificarLogin(usuario, senha)) {
                     System.out.println("Login realizado com sucesso");
 
+                    label:
                     while (true) {
                         System.out.println("Digite 1 para adicionar um medico");
                         System.out.println("Digite 2 para printar os medicos");
                         System.out.println("Digite 3 para sair");
                         String opcao = scanner.nextLine();
-                        if (opcao.equals("1")) {
-                            System.out.println("Digite o nome do medico");
-                            String nome = scanner.nextLine();
-                            System.out.println("Digite o nascimento do medico");
-                            String nascimento = scanner.nextLine();
-                            System.out.println("Digite o crm do medico");
-                            String crm = scanner.nextLine();
-                            System.out.println("Digite o genero do medico");
-                            String genero = scanner.nextLine();
-                            adm.addMedico(nome, nascimento, crm, genero, conexao);
-                        }
-                        else if (opcao.equals("2")) {
-                            adm.printMedicos(conexao);
-                        }
-                        else if (opcao.equals("3")) {
-                            break;
-                        }
-                        else {
-                            System.err.println("Opcao invalida\nTente novamente");
+                        switch (opcao) {
+                            case "1":
+                                adm.addMedico(conexao);
+                                break;
+                            case "2":
+                                adm.printMedico(conexao);
+                                break;
+                            case "3":
+                                break label;
+                            default:
+                                System.err.println("Opcao invalida\nTente novamente");
+                                break;
                         }
                     }
 
