@@ -61,7 +61,8 @@ public class Main {
                             case "2":
                                 System.out.println("Digite 1 para ver os medicos");
                                 System.out.println("Digite 2 para ver os pacientes");
-                                System.out.println("Digite 3 para sair");
+                                System.out.println("Digite 3 para ver consultas");
+                                System.out.println("Digite 4 para sair");
                                 String opcao3 = scanner.nextLine();
                                 switch (opcao3) {
                                     case "1":
@@ -71,6 +72,9 @@ public class Main {
                                         adm.printPaciente(conexao);
                                         break;
                                     case "3":
+                                        adm.printConsulta(conexao);
+                                        break;
+                                    case "4":
                                         break label;
                                     default:
                                         System.err.println("Opcao invalida\n");
