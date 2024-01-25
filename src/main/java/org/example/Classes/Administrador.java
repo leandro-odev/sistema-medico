@@ -1,6 +1,6 @@
 package org.example.Classes;
 
-import org.example.Conexao;
+//import org.example.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,11 +36,9 @@ public class Administrador {
             System.out.println("Digite o genero do medico");
             String genero = scanner.nextLine();
 
-
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date dataUtil = formato.parse(nascimento);
             java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-
 
             String sql = "INSERT INTO medico (nome_medico, nascimento_medico, crm_medico, genero_medico) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement1 = conexao.prepareStatement(sql);
@@ -67,6 +65,19 @@ public class Administrador {
             String cpf = scanner.nextLine();
             System.out.println("Digite o genero do paciente");
             String genero = scanner.nextLine();
+
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date dataUtil = formato.parse(nascimento);
+            java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+
+            String sql = "INSERT INTO paciente (nome_paciente, nascimento_paciente, cpf_paciente, genero_paciente) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement1 = conexao.prepareStatement(sql);
+            preparedStatement1.setString(1, nome);
+            preparedStatement1.setDate(2, dataSql);
+            preparedStatement1.setString(3, cpf);
+            preparedStatement1.setString(4, genero);
+            preparedStatement1.execute();
+            System.out.println("Paciente adicionado com sucesso");
         }
         catch (Exception e) {
             System.err.println("Erro na conexão com o Banco de Dados para adicionar paciente: " + e.getMessage());
@@ -74,9 +85,10 @@ public class Administrador {
     }
 
 
+    // Remover da tables
+
     // Printar medico
     public void printMedico(Connection conexao){
-
         Scanner scanner = new Scanner(System.in);
         String opcao;
         System.out.println("Digite 1 para printar todos os medicos");
@@ -94,6 +106,28 @@ public class Administrador {
                 break;
             default:
                 System.err.println("Opcao invalida\nTente novamente");
+                break;
+        }
+    }
+
+    public void printPaciente(Connection conexao) {
+        Scanner scanner = new Scanner(System.in);
+        String opcao;
+        System.out.println("Digite 1 para printar todos os pacientes");
+        System.out.println("Digite 2 para printar um pacientes especifico");
+        System.out.println("Digite 3 para sair");
+        opcao = scanner.nextLine();
+        switch (opcao) {
+            case "1":
+                printAllPaciente(conexao);
+                break;
+            case "2":
+                printOnePaciente(conexao);
+                break;
+            case "3":
+                break;
+            default:
+                System.err.println("Opcao invalida\n");
                 break;
         }
     }
@@ -144,4 +178,49 @@ public class Administrador {
         }
     }
 
+    public void printAllPaciente(Connection conexao) {
+        try {
+            String consultaSQL = "SELECT * FROM paciente";
+            PreparedStatement preparedStatement = conexao.prepareStatement(consultaSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+
+            while (resultado.next()) {
+                String nomeMedico = resultado.getString("nome_paciente");
+                int idPaciente = resultado.getInt("id_paciente");
+                String nascimentoPaciente = resultado.getString("nascimento_paciente");
+                String cpfPaciente = resultado.getString("cpf_paciente");
+                String generoPaciente = resultado.getString("genero_paciente");
+
+                System.out.println("ID: " + idPaciente + ", Nome: " + nomeMedico + ", Nascimento: " + nascimentoPaciente + ", CPF: " + cpfPaciente + ", Genero: " + generoPaciente);
+            }
+        }
+        catch (SQLException e) {
+            System.err.println("Erro na conexão com o Banco de Dados para printar paciente: " + e.getMessage());
+        }
+    }
+
+    public void printOnePaciente(Connection conexao) {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Digite o CPF do paciente");
+            String id = scanner.nextLine();
+            String consultaSQL = "SELECT * FROM medico WHERE cpf_paciente = ?";
+            PreparedStatement preparedStatement = conexao.prepareStatement(consultaSQL);
+            preparedStatement.setString(1, id);
+            ResultSet resultado = preparedStatement.executeQuery();
+
+            while (resultado.next()) {
+                String nomeMedico = resultado.getString("nome_paciente");
+                int idPaciente = resultado.getInt("id_paciente");
+                String nascimentoPaciente = resultado.getString("nascimento_paciente");
+                String cpfPaciente = resultado.getString("cpf_paciente");
+                String generoPaciente = resultado.getString("genero_paciente");
+
+                System.out.println("ID: " + idPaciente + ", Nome: " + nomeMedico + ", Nascimento: " + nascimentoPaciente + ", CPF: " + cpfPaciente + ", Genero: " + generoPaciente);
+            }
+        }
+        catch (SQLException e) {
+            System.err.println("Erro na conexão com o Banco de Dados para printar paciente: " + e.getMessage());
+        }
+    }
 }

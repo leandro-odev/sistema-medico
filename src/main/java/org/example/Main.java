@@ -26,16 +26,56 @@ public class Main {
 
                     label:
                     while (true) {
-                        System.out.println("Digite 1 para adicionar um medico");
-                        System.out.println("Digite 2 para printar os medicos");
+                        System.out.println("Digite 1 para gerenciar tables");
+                        System.out.println("Digite 2 para ver tables");
                         System.out.println("Digite 3 para sair");
                         String opcao = scanner.nextLine();
                         switch (opcao) {
                             case "1":
-                                adm.addMedico(conexao);
+                                System.out.println("Digite 1 para adicionar um medico");
+                                System.out.println("Digite 2 para adicionar um paciente");
+                                System.out.println("Digite 3 para remover medico");
+                                System.out.println("Digite 4 para remover paciente");
+                                System.out.println("Digite 5 para sair");
+                                String opcao2 = scanner.nextLine();
+                                switch (opcao2) {
+                                    case "1":
+                                        adm.addMedico(conexao);
+                                        break;
+                                    case "2":
+                                        adm.addPaciente(conexao);
+                                        break;
+                                    case "3":
+//                                        adm.removeMedico(conexao);
+                                        break;
+                                    case "4":
+//                                        adm.removePaciente(conexao);
+                                        break;
+                                    case "5":
+                                        break label;
+                                    default:
+                                        System.err.println("Opcao invalida\n");
+                                        break;
+                                }
                                 break;
                             case "2":
-                                adm.printMedico(conexao);
+                                System.out.println("Digite 1 para ver os medicos");
+                                System.out.println("Digite 2 para ver os pacientes");
+                                System.out.println("Digite 3 para sair");
+                                String opcao3 = scanner.nextLine();
+                                switch (opcao3) {
+                                    case "1":
+                                        adm.printMedico(conexao);
+                                        break;
+                                    case "2":
+                                        adm.printPaciente(conexao);
+                                        break;
+                                    case "3":
+                                        break label;
+                                    default:
+                                        System.err.println("Opcao invalida\n");
+                                        break;
+                                }
                                 break;
                             case "3":
                                 break label;
