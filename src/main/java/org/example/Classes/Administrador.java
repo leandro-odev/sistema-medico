@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
 import java.time.ZoneId;
-import java.util.SimpleTimeZone;
 
 public class Administrador {
     private final String usuario;
@@ -148,6 +147,56 @@ public class Administrador {
     }
 
     // Remover da tables
+    public void removeMedico (Connection conexao){
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Digite o CRM do medico");
+            String crm = scanner.nextLine();
+
+            String sql = "DELETE FROM medico WHERE crm_medico = ?";
+            PreparedStatement preparedStatement1 = conexao.prepareStatement(sql);
+            preparedStatement1.setString(1, crm);
+            preparedStatement1.execute();
+            System.out.println("Medico removido com sucesso");
+        }
+        catch (SQLException e) {
+            System.err.println("Erro na conexão com o Banco de Dados para remover medico: " + e.getMessage());
+        }
+    }
+
+    public void removePaciente (Connection conexao){
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Digite o CPF do paciente");
+            String cpf = scanner.nextLine();
+
+            String sql = "DELETE FROM paciente WHERE cpf_paciente = ?";
+            PreparedStatement preparedStatement1 = conexao.prepareStatement(sql);
+            preparedStatement1.setString(1, cpf);
+            preparedStatement1.execute();
+            System.out.println("Paciente removido com sucesso");
+        }
+        catch (SQLException e) {
+            System.err.println("Erro na conexão com o Banco de Dados para remover paciente: " + e.getMessage());
+        }
+    }
+
+    public void removeConsulta (Connection conexao){
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Digite o ID da consulta");
+            int id = scanner.nextInt();
+
+            String sql = "DELETE FROM consulta WHERE id_consulta = ?";
+            PreparedStatement preparedStatement1 = conexao.prepareStatement(sql);
+            preparedStatement1.setInt(1, id);
+            preparedStatement1.execute();
+            System.out.println("Consulta removida com sucesso");
+        }
+        catch (SQLException e) {
+            System.err.println("Erro na conexão com o Banco de Dados para remover consulta: " + e.getMessage());
+        }
+    }
 
     // Printar medico
 

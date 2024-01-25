@@ -34,9 +34,11 @@ public class Main {
                             case "1":
                                 System.out.println("Digite 1 para adicionar um medico");
                                 System.out.println("Digite 2 para adicionar um paciente");
-                                System.out.println("Digite 3 para remover medico");
-                                System.out.println("Digite 4 para remover paciente");
-                                System.out.println("Digite 5 para sair");
+                                System.out.println("Digite 3 para adicionar uma consulta");
+                                System.out.println("Digite 4 para remover medico");
+                                System.out.println("Digite 5 para remover paciente");
+                                System.out.println("Digite 6 para remover consulta");
+                                System.out.println("Digite 7 para sair");
                                 String opcao2 = scanner.nextLine();
                                 switch (opcao2) {
                                     case "1":
@@ -46,13 +48,19 @@ public class Main {
                                         adm.addPaciente(conexao);
                                         break;
                                     case "3":
-//                                        adm.removeMedico(conexao);
+                                        adm.addConsulta(conexao);
                                         break;
                                     case "4":
-//                                        adm.removePaciente(conexao);
+                                        adm.removeMedico(conexao);
                                         break;
                                     case "5":
-                                        break label;
+                                        adm.removePaciente(conexao);
+                                        break;
+                                    case "6":
+                                        adm.removeConsulta(conexao);
+                                        break;
+                                    case "7":
+                                        break;
                                     default:
                                         System.err.println("Opcao invalida\n");
                                         break;
