@@ -19,7 +19,7 @@ public class BasicFunctions {
             sm = 0;
             peso = 10;
             for (i = 0; i < 9; i++) {
-                num = (int) (cpf.charAt(i) - '0');
+                num = (cpf.charAt(i) - '0');
                 sm += num * peso;
                 peso--;
             }
@@ -30,7 +30,7 @@ public class BasicFunctions {
             sm = 0;
             peso = 11;
             for (i = 0; i < 10; i++) {
-                num = (int) (cpf.charAt(i) - '0');
+                num = (cpf.charAt(i) - '0');
                 sm += num * peso;
                 peso--;
             }

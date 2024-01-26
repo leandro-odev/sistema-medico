@@ -2,6 +2,8 @@ package org.example.Classes;
 
 //import org.example.Conexao;
 
+import org.example.Functions.BasicFunctions;
+import java.sql.Connection;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -61,8 +63,19 @@ public class Administrador {
             String nome = scanner.nextLine();
             System.out.println("Digite o nascimento do paciente");
             String nascimento = scanner.nextLine();
-            System.out.println("Digite o cpf do paciente");
-            String cpf = scanner.nextLine();
+            String cpf;
+            while (true) {
+                System.out.println("Digite o cpf do paciente");
+                cpf = scanner.nextLine();
+                if (cpf.equals("sair")) {
+                    return;
+                }
+                else if (BasicFunctions.verifyCpf(cpf)) {
+                    break;
+                }
+
+                System.err.println("CPF invalido\nTente novamente ou digite 'sair' para sair");
+            }
             System.out.println("Digite o genero do paciente");
             String genero = scanner.nextLine();
 
