@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad023d1a-37ed-4ebb-8535-a9cea6e797f3" name="Changes" comment="Verificar CPF">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Classes/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Classes/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Functions/BasicFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Functions/BasicFunctions.java" afterDir="false" />
-    </list>
+    <list default="true" id="ad023d1a-37ed-4ebb-8535-a9cea6e797f3" name="Changes" comment="Verificar CPF" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706294894731</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Verificar CPF">
+      <option name="closed" value="true" />
+      <created>1706295412736</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706295412736</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

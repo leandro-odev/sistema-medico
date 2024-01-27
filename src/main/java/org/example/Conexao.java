@@ -10,10 +10,8 @@ public class Conexao {
         Connection conexao = null;
 
         try {
-            // Carregar o driver JDBC
             Class.forName("org.postgresql.Driver");
 
-            // Estabelecer a conexão com o banco de dados
             String url = "jdbc:postgresql://localhost:5432/sistema-medico";
             String usuario = "postgres";
             String senha = "Sandro231104";
