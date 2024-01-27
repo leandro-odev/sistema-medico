@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.Classes.Administrador;
+import org.example.Functions.pacienteFunc;
+import org.example.Functions.medicoFunc;
 
 import java.sql.Connection;
 //import java.sql.PreparedStatement;
@@ -16,6 +18,9 @@ public class Main {
             try {
                 Administrador adm = new Administrador("adm", "adm");
                 Scanner scanner = new Scanner(System.in);
+                pacienteFunc pacienteFunc = new pacienteFunc();
+                medicoFunc medicoFunc = new medicoFunc();
+
 
                 System.out.println("Digite o usuario");
                 String usuario = scanner.nextLine();
@@ -42,19 +47,20 @@ public class Main {
                                 String opcao2 = scanner.nextLine();
                                 switch (opcao2) {
                                     case "1":
-                                        adm.addMedico(conexao);
+                                        medicoFunc.addMedico(conexao);
                                         break;
                                     case "2":
-                                        adm.addPaciente(conexao);
+
+                                        pacienteFunc.addPaciente(conexao);
                                         break;
                                     case "3":
                                         adm.addConsulta(conexao);
                                         break;
                                     case "4":
-                                        adm.removeMedico(conexao);
+                                        medicoFunc.removeMedico(conexao);
                                         break;
                                     case "5":
-                                        adm.removePaciente(conexao);
+                                        pacienteFunc.removePaciente(conexao);
                                         break;
                                     case "6":
                                         adm.removeConsulta(conexao);
