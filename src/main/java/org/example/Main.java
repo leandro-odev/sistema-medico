@@ -3,6 +3,7 @@ package org.example;
 import org.example.Classes.Administrador;
 import org.example.Functions.pacienteFunc;
 import org.example.Functions.medicoFunc;
+import org.example.Functions.consultaFunc;
 
 import java.sql.Connection;
 //import java.sql.PreparedStatement;
@@ -20,6 +21,7 @@ public class Main {
                 Scanner scanner = new Scanner(System.in);
                 pacienteFunc pacienteFunc = new pacienteFunc();
                 medicoFunc medicoFunc = new medicoFunc();
+                consultaFunc consultaFunc = new consultaFunc();
 
 
                 System.out.println("Digite o usuario");
@@ -54,7 +56,7 @@ public class Main {
                                         pacienteFunc.addPaciente(conexao);
                                         break;
                                     case "3":
-                                        adm.addConsulta(conexao);
+                                        consultaFunc.addConsulta(conexao);
                                         break;
                                     case "4":
                                         medicoFunc.removeMedico(conexao);
@@ -63,7 +65,7 @@ public class Main {
                                         pacienteFunc.removePaciente(conexao);
                                         break;
                                     case "6":
-                                        adm.removeConsulta(conexao);
+                                        consultaFunc.removeConsulta(conexao);
                                         break;
                                     case "7":
                                         break;
